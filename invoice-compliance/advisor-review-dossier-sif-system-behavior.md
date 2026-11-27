@@ -1,8 +1,8 @@
 # Expediente único para revisión fiscal — comportamiento del sistema y parámetros de producto
 
 **Proyecto:** invoice-compliance  
-**Versión:** 0.3 — paquete de preguntas preparado; borrador no enviado  
-**Fecha:** 2026-11-26  
+**Versión:** 0.4 — addendum de vigencia normativa; consulta aún no enviada  
+**Fecha:** 2026-11-27 (base de consulta v0.3: 2026-11-26)  
 **Trazabilidad interna:** OQ-0010 permanece separada y fuera de esta consulta; aplicabilidad de perfiles en §§4 y 7  
 **Baseline técnica documental:** `AEAT-VERIFACTU-CANDIDATE-2026-11-26`  
 **Estado del producto:** especificación documental; no hay backend/adaptador implementado o autorizado, perfiles fiscales habilitados ni pruebas de producto acreditadas.
@@ -255,3 +255,54 @@ El encargo es revisar coherencia fiscal, aplicabilidad, excepciones, hechos que 
 El expediente contiene supuestos sintéticos, no datos de clientes ni evidencia de operaciones reales. Si la conclusión requiere hechos o documentos adicionales, identifíquelos por categoría y señale a qué perfil o tema afectan. No es necesario responder combinaciones exhaustivas: se busca una conclusión global con excepciones materiales y límites claramente delimitados.
 
 **Material incluido:** este expediente único, versión 0.3. Sus referencias internas identifican fuentes y antecedentes; las capturas técnicas citadas son candidatas y no se presentan como bundle efectivo de un adaptador. El paquete no ha sido enviado y no contiene dictamen externo.
+
+## 13. Addendum de contraste oficial — 2026-11-27
+
+**Estado:** actualización documental de fuentes oficiales posterior a v0.3; no enviada a asesoría. No es dictamen profesional, aceptación especializada, aprobación adicional de Producto ni evidencia de conformidad. Este addendum prevalece sobre las referencias temporales y parámetros candidatos de §§4, 5.3 y 5.5 cuando exista contradicción, sin reescribir el registro histórico de la consulta preparada.
+
+### 13.1 Calendario y ámbito temporal
+
+- La DF cuarta del RD 1007/2023 fue modificada por la DF primera del RDL 43/2026, publicado el 25/11/2026 y vigente desde el 26/11/2026. Para obligados del art. 3.1, la adaptación queda vinculada al plazo de la DF cuarta.1.b del RD 238/2026. La Orden HAC/1028/2026 entró en vigor el 06/10/2026 y el plazo de veinticuatro meses conduce al **06/10/2028**; AEAT informa que los sistemas deben estar adaptados antes de esa fecha.
+- Las fechas 01/01/2027 y 01/07/2027 asociadas al RDL 15/2025 en el material previo son históricas y no deben presentarse como calendario vigente de los usuarios al corte de este addendum.
+- El plazo de productores/comercializadores del art. 3.2 es distinto: nueve meses desde la entrada en vigor de la Orden HAC/1177/2024 (29/10/2024), con la previsión específica para sistemas incluidos en contratos de mantenimiento plurianual anteriores al plazo. No se traslada automáticamente a 2028.
+- Este cambio temporal no modifica por sí mismo el ámbito subjetivo/objetivo, las exclusiones, la modalidad VERI*FACTU voluntaria ni la decisión de producto de mantener perfiles deshabilitados. Deben distinguirse RRSIF, VERI*FACTU y factura electrónica B2B. La fecha debe revalidarse antes de cualquier habilitación u operación futura.
+
+**Fuentes:** RD 1007/2023, DF cuarta consolidada y redacción vigente desde 26/11/2026; RDL 43/2026, DF primera y final; RD 238/2026, DF cuarta.1.b; Orden HAC/1028/2026, DF única; nota informativa AEAT de ampliación de plazo, actualización 25/11/2026. Los textos consolidados BOE son informativos; para fines jurídicos prevalece la publicación oficial.
+
+### 13.2 Remisión VERI*FACTU y límite por fichero
+
+La revisión directa de la Orden HAC/1177/2024 distingue las reglas siguientes:
+
+- El **art. 16** regula el control de flujo y la contingencia VERI*FACTU: parámetro inicial de espera de 60 segundos entre envíos, ajustable conforme al parámetro de respuesta; siguiente envío al vencer el intervalo o alcanzarse el máximo de registros aplicable, lo que ocurra antes; recuperación tan pronto como sea posible y en orden cronológico; reintento al menos horario durante la incidencia; comunicación de la incidencia e información visible de los pendientes mientras subsista alguno pendiente. El primer envío no debe demorarse por la espera entre envíos.
+- El límite de **1.000 registros es por fichero remitido** y se encuentra en el **anexo, apartado 2.2**, no como cifra autónoma en el art. 16. No debe confundirse con el máximo/parametrización del control de flujo.
+- La remisión puede desacoplarse técnicamente, pero la asincronía no permite demorarla discrecionalmente ni sustituye el envío continuado exigido para VERI*FACTU.
+- No confundir el art. 9 del RD 1007/2023 (alta simultánea o inmediatamente anterior a la expedición) con el art. 9 de la Orden HAC/1177/2024 (registro de eventos). El art. 16 de la Orden contiene la contingencia VERI*FACTU.
+- Por el art. 3 de la Orden, mientras opera como VERI*FACTU no son aplicables, entre otros, los arts. 8 y 9 de esa Orden. Esto no elimina la conservación de las facturas ni permite perder/borrar registros todavía pendientes de remitir.
+
+La clasificación precedente es lectura normativa documental, no aceptación del contrato/adaptador, validación de un protocolo concreto ni cierre de OQ-0010. Se deben fijar versiones técnicas y oráculos del adaptador por la vía competente.
+
+### 13.3 QR, declaración responsable, representación y conservación
+
+- Orden HAC/1177/2024, arts. 20–21: dimensiones QR 30×30 a 40×40 mm, ISO/IEC 18004 y corrección M son especificaciones reglamentarias en el ámbito aplicable; para factura electrónica estructurada la URL puede sustituir la imagen QR como campo independiente. La mención VERI*FACTU solo corresponde a la modalidad indicada. Falta fijar y probar la especificación técnica AEAT versionada del QR/URL; no se acredita un QR implementado.
+- La declaración responsable corresponde al productor/sistema y sus componentes funcionales conforme al art. 1.2 y art. 15 de la Orden. Debe evaluarse por producto, componente y versión; no toda librería/dependencia constituye automáticamente componente fiscal. Su declaración no es homologación AEAT. La entidad responsable y el inventario real de componentes siguen sin acreditarse.
+- Separar encargo de expedición material, facultad de remitir ante AEAT, otras actuaciones y tratamiento de datos. Un certificado electrónico identifica al remitente, pero no acredita por sí solo todas las facultades. Requieren validación legal/fiscal los mandatos, representación, colaboración social, alcance y revocación.
+- No establecer un plazo de conservación universal. Separar factura, registro SIF, respuestas/remisiones, mandatos, declaraciones, auditoría, copias y datos derivados; identificar sujeto obligado, finalidad, fuente, hito inicial, ampliaciones/interrupciones, acceso y destino final. La obligación de conservar la factura no desaparece por remitir registros a AEAT. Para VERI*FACTU no trasladar automáticamente los requisitos de conservación/exportación propios del régimen NO VERI*FACTU.
+
+### 13.4 Límites y estado
+
+El resultado consultivo recibido y las revisiones documentales asistidas no son un dictamen fiscal firmado ni una aceptación atribuible de Tax/Legal/SIF. Permanecen sin cambios: perfiles `CANDIDATE / DISABLED`; OQ-0010 `OPEN`; ADR-0001 `PROPOSED`; readiness `BLOCKED — NO IMPLEMENTATION HANDOFF`. El addendum no habilita perfiles, no aprueba arquitectura ni autoriza desarrollo, pruebas, distribución u operación.
+
+**Fuentes oficiales consultadas:** [RD 1007/2023 consolidado](https://www.boe.es/buscar/act.php?id=BOE-A-2023-24840); [RDL 43/2026](https://www.boe.es/buscar/doc.php?id=BOE-A-2026-24701); [RD 238/2026](https://www.boe.es/eli/es/rd/2026/03/25/238/con); [Orden HAC/1028/2026](https://www.boe.es/buscar/act.php?id=BOE-A-2026-20587); [Orden HAC/1177/2024 consolidada](https://www.boe.es/buscar/act.php?id=BOE-A-2024-22138); [AEAT — nota ampliación de plazo](https://sede.agenciatributaria.gob.es/Sede/iva/sistemas-informaticos-facturacion-verifactu/nota-informativa-ampliacion-plazo-adaptacion-facturacion.html), actualizada 25/11/2026; [AEAT — FAQ SIF/VERI*FACTU](https://sede.agenciatributaria.gob.es/Sede/iva/sistemas-informaticos-facturacion-verifactu/preguntas-frecuentes.html), actualizada 27/11/2026.
+
+### 13.5 Consulta externa reducida propuesta — no enviada
+
+El contraste oficial reduce la consulta: no volver a preguntar si el calendario de usuarios es 01/01/2027/01/07/2027, si el máximo por fichero es 1.000, si el anexo normativo exige QR de 30–40 mm/M, ni si Orden art. 16 contiene la contingencia. Los puntos siguientes requieren asesoría y/o definición del sistema real:
+
+1. **Aplicabilidad individual TAX-001…005:** confirmar, con la cadena normativa vigente, filtros y excepciones por emisor/operación/modalidad; indicar evidencia real necesaria. No se solicita volver a decidir las fechas ni habilitar perfiles.
+2. **Representación por actuación:** revisar encargo de expedición material, facultad de remisión ante AEAT, otras actuaciones y tratamiento/subencargo; identificar evidencias y efectos de revocación. Distinguir certificado electrónico de mandato/representación.
+3. **Productor y componentes:** determinar, sobre el producto y componentes efectivamente existentes, qué entidad realiza funciones de producción/comercialización, qué declaración corresponde a cada sistema/componente/versión y cómo se conserva y facilita. No se atribuye esta responsabilidad a una entidad por contrato o marca solamente.
+4. **Correcciones y conservación:** precisar por categoría los supuestos de rectificación, anulación y subsanación y su evidencia; determinar sujeto, fuente, hito, interrupciones/ampliaciones, acceso y destino de factura, registro, respuesta, mandato, declaración y evidencia, sin plazo universal.
+5. **QR/URL ejecutable:** identificar versión vigente del documento técnico AEAT, estructura/encoding/endpoint aplicable y oráculos necesarios antes de validación técnica. La norma dimensional ya está identificada, pero no hay QR implementado ni bundle técnico probado.
+6. **Confirmación de alcance consultivo:** identificar profesional, competencia, fecha, fuentes y hechos cubiertos, conclusiones condicionadas y límites. La respuesta debe quedar diferenciada de decisión de Producto, aceptación técnica, aprobación de ADR y autorización de implementación.
+
+La consulta reducida conserva fuera de alcance mappings/outcomes/duplicados y elegibilidad por línea de OQ-0010; estos requieren su proceso separado con aceptación atribuible Tax/SIF. No se adjunta ni se atribuye una respuesta externa recibida como dictamen firmado.
